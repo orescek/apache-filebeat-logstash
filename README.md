@@ -7,4 +7,4 @@ Logstash writes it to standard output and in file.
 - filebeat
 - logstash
 
-You can set different configuration for each, through configs.
+You can set different configuration for each - through configs.
