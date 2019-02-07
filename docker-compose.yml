@@ -1,0 +1,32 @@
+version: '3'
+services:
+  
+  apache:
+    image: centos/httpd
+    ports: 
+      - "80:80"
+    volumes:
+      - "./httpd.conf:/etc/httpd/conf/httpd.conf"
+      - "./apache-logs:/var/log/httpd"
+      - "./simple.html:/var/www/html/index.html"
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:6.5.4
+    links: 
+      - apache
+      - logstash
+    ports:
+      - "5403:5403"
+    volumes:
+      - "./apache-logs:/var/log/httpd"
+      - "./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro" 
+
+  logstash:
+    image: logstash:6.5.4
+    volumes:
+      - "./logstash.conf:/logstash.conf"
+      - "./logstash_logs:/var/log/logstash"
+    command: logstash -f /logstash.conf
+    ports:
+      - "5959:5959"
+      - "5044:5044"
