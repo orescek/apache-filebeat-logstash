@@ -1,6 +1,11 @@
 # Testing logstash parsing of appache logs
 
-Logstash writes it to standard output and in file.
+Logstash writes it to standard output, elasticsearch and in file.
+
+You can test apache logs with different settings.
+You can also test logstash configuration files and playing with grok.
+
+Logstash reloads automatically config
 
 # What is run
 - apache
