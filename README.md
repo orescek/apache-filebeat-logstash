@@ -6,5 +6,7 @@ Logstash writes it to standard output and in file.
 - apache
 - filebeat
 - logstash
+- elasticsearch
+- kibana
 
 You can set different configuration for each - through configs.
