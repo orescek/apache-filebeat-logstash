@@ -26,7 +26,7 @@ services:
     volumes:
       - "./logstash.conf:/logstash.conf"
       - "./logstash_logs:/var/log/logstash"
-    command: logstash -f /logstash.conf
+    command: logstash -f /logstash.conf --config.reload.automatic
     ports:
       - "5959:5959"
       - "5044:5044"
